@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormatterService } from 'src/app/services/formatter/formatter.service';
+import { IFormatterService } from 'src/app/services/formatter/formatter.service.interface';
 
 import { TemplateOutputPanelComponent } from './template-output-panel.component';
 
@@ -8,7 +10,8 @@ describe('TemplateOutputPanelComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TemplateOutputPanelComponent ]
+      declarations: [ TemplateOutputPanelComponent ],
+      providers: [{ provide: IFormatterService, useClass: FormatterService }]
     })
     .compileComponents();
   });

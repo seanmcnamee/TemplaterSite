@@ -3,5 +3,5 @@
         <span class="fa-solid fa-trash"></span>
     </button>
 </td>
-<td><input value="{{item.key}}" (change)="onKeyChange(keyInput.value)" #keyInput></td>
-<td><input value="{{item.value}}" (change)="onValueChange(valueInput.value)" #valueInput></td>
+<td><input value="{{item?.key}}" (change)="onKeyChange(keyInput.value)" #keyInput></td>
+<td><input value="{{item?.value}}" (change)="onValueChange(valueInput.value)" #valueInput></td>

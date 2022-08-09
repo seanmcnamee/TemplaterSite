@@ -27,14 +27,9 @@
             "style": "camelCase"
           }
         ],
-        "@angular-eslint/component-selector": [
-          "error",
-          {
-            "type": "element",
-            "prefix": "app",
-            "style": "kebab-case"
-          }
-        ]
+        "@angular-eslint/component-selector": "off",
+        "@angular-eslint/no-empty-lifecycle-method": "off",
+        "@typescript-eslint/no-empty-function": "off"
       }
     },
     {
