@@ -1,9 +1,7 @@
-# TemplaterSite
+# TemplaterSite 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.4.
-
-Steps for creation:
-- Create Angular application with `ng new TemplaterSite`
+## Steps for creation:
+- Create Angular application with `ng new TemplaterSite` with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.4.
     - Use Angular Routing
     - Use SCSS
 - `cd TemplaterSite`
@@ -16,7 +14,7 @@ Steps for creation:
     - Modify `spec.cy.ts` test (remove one of the 'contains' tests)
 - Test linting with `ng lint`
 - Edit `karma.conf.js` near the bottom to look as follows:
-```
+```json
 autoWatch: true,
     browsers: ['Chrome', 'ChromeHeadlessCI'],
     customLaunchers: {
@@ -34,13 +32,13 @@ autoWatch: true,
 - Make sure `ng build` is working
 - Test out `ng deploy --base-href=/TemplaterSite/ --name='GH Actions Deployment' --email=seanmcnamee.45@gmail.com`
 - Edit package.json to include the tests and deployment
-```
+```json
     "test:ci": "npm test -- --no-watch --no-progress --browsers=ChromeHeadlessCI",
     "e2e:cypress:ci": "ng run TemplaterSite:cypress-run",
     "deploy": "ng deploy --base-href=/TemplaterSite/ --name='GH Actions Deployment' --email=seanmcnamee.45@gmail.com"
 ```
 - Make CI for GH Actions
-```
+```yml
 # Continuous integration for Angular
 name: Angular GitHub CI Tests
 
@@ -78,7 +76,7 @@ jobs:
           npm run e2e:cypress:ci
 ```
 - Make CD for GH Actions
-```
+```yml
 # Continuous integration for Angular
 name: Angular GitHub CI/CD
 
@@ -149,11 +147,19 @@ jobs:
 	    - Name: SEAN_ACCESS_TOKEN
 - Add bootstrap (SCSS) with `npm install bootstrap --save`
     - Add `@import "~bootstrap/dist/css/bootstrap.css";` to styles.scss
+- Add Font Awesome (SCSS) with `npm install --save @fortawesome/fontawesome-free`
+    - Add the following to styles.scss (where solid and brands are the icon packs)
+```scss
+$fa-font-path: "../webfonts";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "~@fortawesome/fontawesome-free/scss/solid.scss";
+@import "~@fortawesome/fontawesome-free/scss/brands.scss";
+```
 
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve` or `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
