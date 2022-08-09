@@ -147,6 +147,8 @@ jobs:
     - Settings > Secrets > Actions > New repository secret
         - Paste value from personal access token
 	    - Name: SEAN_ACCESS_TOKEN
+- Add bootstrap (SCSS) with `npm install bootstrap --save`
+    - Add `@import "~bootstrap/dist/css/bootstrap.css";` to styles.scss
 
 
 ## Development server
