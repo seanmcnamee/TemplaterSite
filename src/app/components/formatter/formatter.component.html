@@ -1,0 +1,10 @@
+<div class="row g-2">
+    <div class="col-lg-6">
+        <app-replacements-panel [replacementItems]="replacementItems" (itemsChanged)="replacementItemsChanged($event)">
+        </app-replacements-panel>
+    </div>
+    <div class="col-lg-6">
+        <app-template-output-panel [replacementItems]="replacementItems">
+        </app-template-output-panel>
+    </div>
+</div>

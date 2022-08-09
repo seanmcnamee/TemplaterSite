@@ -1,0 +1,21 @@
+<div class="card bg-light rounded-0 shadow">
+    <div class="card-body">
+        <h5 class="card-title">Replacements</h5>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Delete</th>
+                    <th scope="col">Key</th>
+                    <th scope="col">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr replacementItem *ngFor="let replacementItem of replacementItems"
+                    [item]="replacementItem"
+                    (deleteEvent)="onItemDeleted($event)"
+                    (changeEvent)="onItemChanged($event)">
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

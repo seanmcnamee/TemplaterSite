@@ -1,0 +1,11 @@
+<div class="card bg-light rounded-0 shadow">
+    <div class="card-body">
+        <h5 class="card-title">Template</h5>
+        <textarea value="{{templateValue}}" (input)="templateChanged(templateInput.value)" class="w-100" #templateInput></textarea>
+    </div>
+    
+    <div class="card-body">
+        <h5 class="card-title">Output</h5>
+        <textarea value="{{outputValue}}" readonly class="w-100"></textarea>
+    </div>
+</div>

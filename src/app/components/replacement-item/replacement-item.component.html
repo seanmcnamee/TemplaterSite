@@ -1,0 +1,7 @@
+<td scope="row">
+    <button type="button" (click)="onDelete()" class="btn btn-outline-danger">
+        <span class="fa-solid fa-trash"></span>
+    </button>
+</td>
+<td><input value="{{item.key}}" (change)="onKeyChange(keyInput.value)" #keyInput></td>
+<td><input value="{{item.value}}" (change)="onValueChange(valueInput.value)" #valueInput></td>
