@@ -7,10 +7,13 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "test:ci": "npm test -- --no-watch --no-progress --browsers=ChromeHeadlessCI",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "e2e:cypress:ci": "ng run TemplaterSite:cypress-run",
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run"
+    "cypress:run": "cypress run",
+    "deploy": "ng deploy --base-href=/TemplaterSite/ --name='GH Actions Deployment' --email=seanmcnamee.45@gmail.com"
   },
   "private": true,
   "dependencies": {
