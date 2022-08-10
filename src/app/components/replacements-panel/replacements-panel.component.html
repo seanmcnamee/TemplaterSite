@@ -4,16 +4,29 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th scope="col">Delete</th>
-                    <th scope="col">Key</th>
-                    <th scope="col">Value</th>
+                    <th scope="col"></th>
+                    <th scope="col">Key
+                        <span class="fa-solid fa-circle-info" data-bs-toggle="tooltip" title="Specify a key in your template with {key}"></span>
+                    </th>
+                    <th scope="col">Value
+                        <span class="fa-solid fa-circle-info" data-bs-toggle="tooltip" title="Values will be replaced in the output"></span>
+                    </th>
                 </tr>
             </thead>
             <tbody>
                 <tr replacementItem *ngFor="let replacementItem of replacementItems"
                     [item]="replacementItem"
                     (deleteEvent)="onItemDeleted($event)"
-                    (changeEvent)="onItemChanged($event)">
+                    (changeEvent)="onItemChanged()">
+                </tr>
+                <tr>
+                    <td scope="row" class="w-0">
+                        <button type="button" (click)="onItemAdded()" class="btn btn-outline-success">
+                            <span class="fa-solid fa-plus"></span>
+                        </button>
+                    </td>
+                    <td></td>
+                    <td></td>
                 </tr>
             </tbody>
         </table>

@@ -8,8 +8,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class ReplacementItemComponent implements OnInit {
   @Input() item!: ReplacementItem;
   
-  @Output() deleteEvent = new EventEmitter<number>();
-  @Output() changeEvent = new EventEmitter<ReplacementItem>();
+  @Output() deleteEvent = new EventEmitter<ReplacementItem>();
+  @Output() changeEvent = new EventEmitter<void>();
 
   constructor() { }
 
@@ -17,25 +17,26 @@ export class ReplacementItemComponent implements OnInit {
   }
 
   public onDelete() {
-    this.deleteEvent.emit(this.item.id);
+    this.deleteEvent.emit(this.item);
   }
   public onKeyChange(newKey: string){
     this.item.key = newKey;
-    this.changeEvent.emit(this.item);
+    this.changeEvent.emit();
   }
   public onValueChange(newValue: string){
     this.item.value = newValue;
-    this.changeEvent.emit(this.item);
+    this.changeEvent.emit();
   }
 }
 export class ReplacementItem {
-  id: number;
+  static idNum: number = 0;
+  id!: string;
   key: string;
   value: string;
 
-  constructor(id: number, key: string, value: string) {
-    this.id = id;
-    this.key = key;
-    this.value = value;
+  constructor(key?: string, value?: string) {
+    this.id = String(ReplacementItem.idNum++);
+    this.key = key ?? "";
+    this.value = value ?? "";
   }
 }

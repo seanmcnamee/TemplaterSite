@@ -1,7 +1,7 @@
-<td scope="row">
-    <button type="button" (click)="onDelete()" class="btn btn-outline-danger">
+<td scope="row" class="w-0">
+    <button type="button" (click)="onDelete()" class="btn btn-outline-danger" title="Delete replacement">
         <span class="fa-solid fa-trash"></span>
     </button>
 </td>
 <td><input value="{{item?.key}}" (change)="onKeyChange(keyInput.value)" #keyInput></td>
-<td><input value="{{item?.value}}" (change)="onValueChange(valueInput.value)" #valueInput></td>
+<td><textarea value="{{item?.value}}" (change)="onValueChange(valueInput.value)" #valueInput></textarea></td>

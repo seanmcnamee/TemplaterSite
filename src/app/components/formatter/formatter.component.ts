@@ -11,7 +11,7 @@ export class FormatterComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.replacementItems = [new ReplacementItem(0, "name", "sean"), new ReplacementItem(1, "age", "22")];
+    this.replacementItems = [new ReplacementItem("name", "sean"), new ReplacementItem("age", "22")];
   }
 
   public replacementItemsChanged(items: ReplacementItem[]): void {

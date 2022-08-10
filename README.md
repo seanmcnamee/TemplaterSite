@@ -146,7 +146,7 @@ jobs:
         - Paste value from personal access token
 	    - Name: SEAN_ACCESS_TOKEN
 - Add bootstrap (SCSS) with `npm install bootstrap --save`
-    - Add `@import "~bootstrap/dist/css/bootstrap.css";` to styles.scss
+    - Add `@import "~bootstrap/scss/bootstrap.scss";` to styles.scss
 - Add Font Awesome (SCSS) with `npm install --save @fortawesome/fontawesome-free`
     - Add the following to styles.scss (where solid and brands are the icon packs)
 ```scss

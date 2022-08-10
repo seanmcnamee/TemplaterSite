@@ -10,7 +10,7 @@ export class FormatterService implements IFormatterService {
   constructor() { }
 
   public format(template: string, map: Map<string, string>): string {
-    if (!map) return template;
+    if (!template || !map) return template;
 
     for (const entry of map.entries()) {
         var key = entry[0], value = entry[1];

@@ -1,5 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~bootstrap/dist/css/bootstrap.css";
+
+@import "~bootstrap/scss/_functions.scss";
+@import "~bootstrap/scss/_variables.scss";
+@import "~bootstrap/scss/_maps.scss";
+@import "~bootstrap/scss/_utilities.scss";
+
+$utilities: map-merge(
+  $utilities,
+  (
+    "width": map-merge(
+      map-get($utilities, "width"),
+      (
+        values: map-merge(
+          map-get(map-get($utilities, "width"), "values"),
+          (0: 0%),
+        ),
+      ),
+    ),
+  )
+);
+
+@import "~bootstrap/scss/bootstrap.scss";
 
 $fa-font-path: "../webfonts";
 @import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
