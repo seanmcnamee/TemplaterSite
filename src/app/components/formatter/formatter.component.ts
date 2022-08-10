@@ -8,13 +8,26 @@ import { ReplacementItem } from '../replacement-item/replacement-item.component'
 })
 export class FormatterComponent implements OnInit {
   replacementItems: ReplacementItem[] = [];
+  template: string = '';
+
   constructor() { }
 
   ngOnInit(): void {
-    this.replacementItems = [new ReplacementItem("name", "sean"), new ReplacementItem("age", "22")];
+    this.replacementItems = [];
   }
 
   public replacementItemsChanged(items: ReplacementItem[]): void {
     this.replacementItems = items;
+  }
+
+  public templateChanged(newTemplate: string) {
+    this.template = newTemplate;
+  }
+
+  public loadReplacementItems(){
+    var keyMatches = [...new Set((this.template.match(/\{\w+\}/g)))];
+    var newReplacementItems = keyMatches.map(key => new ReplacementItem(key.slice(1, key.length-1), ""));
+
+    this.replacementItems = this.replacementItems.concat(newReplacementItems);
   }
 }

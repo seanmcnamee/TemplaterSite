@@ -19,6 +19,15 @@
                     (deleteEvent)="onItemDeleted($event)"
                     (changeEvent)="onItemChanged()">
                 </tr>
+                <tr *ngIf="!replacementItems?.length">
+                    <td scope="row" colspan="3" class="w-0">
+                        <div class="row justify-content-center">
+                            <button type="button" (click)="addKeysFromTemplate()" class="btn btn-outline-success w-auto">
+                                <span class="fa-solid fa-refresh"></span> Generate from template
+                            </button>
+                        </div>
+                    </td>
+                </tr>
                 <tr>
                     <td scope="row" class="w-0">
                         <button type="button" (click)="onItemAdded()" class="btn btn-outline-success">

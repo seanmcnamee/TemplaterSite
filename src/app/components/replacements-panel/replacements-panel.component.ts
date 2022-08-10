@@ -10,6 +10,7 @@ import { ReplacementItem } from '../replacement-item/replacement-item.component'
 export class ReplacementsPanelComponent implements OnInit {
   @Input() replacementItems: ReplacementItem[] = [];
   @Output() itemsChanged = new EventEmitter<ReplacementItem[]>();
+  @Output() loadReplacementItems = new EventEmitter<void[]>();
 
   newReplacementItem: ReplacementItem = new ReplacementItem();
 
@@ -23,6 +24,10 @@ export class ReplacementsPanelComponent implements OnInit {
   public onItemAdded(){
     this.replacementItems.push(new ReplacementItem());
     this.itemsChanged.emit(Array.from(this.replacementItems));
+  }
+
+  public addKeysFromTemplate() {
+    this.loadReplacementItems.emit();
   }
 
   public onItemDeleted(item: ReplacementItem){

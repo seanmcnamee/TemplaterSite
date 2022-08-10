@@ -1,10 +1,16 @@
 <div class="row g-2">
     <div class="col-lg-6">
-        <app-replacements-panel [replacementItems]="replacementItems" (itemsChanged)="replacementItemsChanged($event)">
+        <app-replacements-panel 
+            [replacementItems]="replacementItems" 
+            (itemsChanged)="replacementItemsChanged($event)"
+            (loadReplacementItems)="loadReplacementItems()">
         </app-replacements-panel>
     </div>
     <div class="col-lg-6">
-        <app-template-output-panel [replacementItems]="replacementItems">
+        <app-template-output-panel 
+        [replacementItems]="replacementItems"
+        [templateValue]="template"
+        (templateValueChanged)="templateChanged($event)">
         </app-template-output-panel>
     </div>
 </div>
