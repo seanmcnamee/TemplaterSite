@@ -28,7 +28,6 @@ export class ReplacementsExtractorService implements IReplacementsExtractorServi
 
     var replacementItems = [];
     for(const properties of jsonArray) { /* For now, only grab first */
-      console.log("properties: ", properties);
       for (const key in properties) {
         replacementItems.push(new ReplacementItem(key, properties[key]))
       }

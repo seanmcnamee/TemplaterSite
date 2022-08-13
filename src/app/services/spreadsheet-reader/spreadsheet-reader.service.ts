@@ -30,7 +30,6 @@ export class SpreadsheetReaderService implements ISpreadsheetReaderService {
 
         /* save data */
         const data = XLSX.utils.sheet_to_json(ws); // to get 2d array pass 2nd parameter as object {header: 1}
-        console.log(data); // Data will be logged in array format containing objects
         resolve(data);
       };
       reader.onerror = (e: any) => reject("Error occurred while reading file");
