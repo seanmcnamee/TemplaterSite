@@ -1,53 +1,55 @@
 <div class="card bg-light rounded-0 shadow">
     <div class="card-body">
         <h5 class="card-title">Replacements</h5>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col"></th>
-                    <th scope="col">Key
-                        <span class="fa-solid fa-circle-info" data-bs-toggle="tooltip"
-                            title="Specify a key in your template with {key}"></span>
-                    </th>
-                    <th scope="col">Value
-                        <span class="fa-solid fa-circle-info" data-bs-toggle="tooltip"
-                            title="Values will be replaced in the output"></span>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr replacementItem *ngFor="let replacementItem of replacementItems" [item]="replacementItem"
-                    (deleteEvent)="onItemDeleted($event)" (changeEvent)="onItemChanged()">
-                </tr>
-                <tr *ngIf="!replacementItems?.length">
-                    <td scope="row" colspan="3" class="w-0">
-                        <div class="row justify-content-center">
-                            <div class="col-auto">
-                                <button type="button" [disabled]="!generateFromTemplateAllowed" (click)="addKeysFromTemplate()"
-                                    class="btn btn-outline-success w-auto">
-                                    <span class="fa-solid fa-refresh"></span> Generate from template
-                                </button>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Key
+                            <span class="fa-solid fa-circle-info" data-bs-toggle="tooltip"
+                                title="Specify a key in your template with {key}"></span>
+                        </th>
+                        <th scope="col">Value
+                            <span class="fa-solid fa-circle-info" data-bs-toggle="tooltip"
+                                title="Values will be replaced in the output"></span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr replacementItem *ngFor="let replacementItem of replacementItems" [item]="replacementItem"
+                        (deleteEvent)="onItemDeleted($event)" (changeEvent)="onItemChanged()">
+                    </tr>
+                    <tr *ngIf="!replacementItems?.length">
+                        <td scope="row" colspan="3" class="w-0">
+                            <div class="row justify-content-center">
+                                <div class="col-auto">
+                                    <button type="button" [disabled]="!generateFromTemplateAllowed" (click)="addKeysFromTemplate()"
+                                        class="btn btn-outline-success w-auto">
+                                        <span class="fa-solid fa-refresh"></span> Generate from template
+                                    </button>
+                                </div>
+                                <div class="col-auto">
+                                    <input type="file" id="spreadsheet-upload" class="form-control d-none"
+                                        accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel" />
+                                    <label class="btn btn-outline-success" for="spreadsheet-upload">
+                                        <span class="fa-solid fa-file-excel"></span> Upload from spreadsheet
+                                    </label>
+                                </div>
                             </div>
-                            <div class="col-auto">
-                                <input type="file" id="spreadsheet-upload" class="form-control d-none"
-                                    accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel" />
-                                <label class="btn btn-outline-success" for="spreadsheet-upload">
-                                    <span class="fa-solid fa-file-excel"></span> Upload from spreadsheet
-                                </label>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td scope="row" class="w-0">
-                        <button type="button" (click)="onItemAdded()" class="btn btn-outline-success">
-                            <span class="fa-solid fa-plus"></span>
-                        </button>
-                    </td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </tbody>
-        </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="row" class="w-0">
+                            <button type="button" (click)="onItemAdded()" class="btn btn-outline-success">
+                                <span class="fa-solid fa-plus"></span>
+                            </button>
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
