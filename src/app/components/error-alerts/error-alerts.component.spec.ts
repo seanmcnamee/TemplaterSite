@@ -2,27 +2,22 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { IErrorAlertsService } from 'src/app/services/error-alerts/arror-alerts.service.interface';
 import { ErrorAlertsService } from 'src/app/services/error-alerts/error-alerts.service';
 
-import { ReplacementsPanelComponent } from './replacements-panel.component';
+import { ErrorAlertsComponent } from './error-alerts.component';
 
-describe('ReplacementsPanelComponent', () => {
-  let component: ReplacementsPanelComponent;
-  let fixture: ComponentFixture<ReplacementsPanelComponent>;
+describe('ErrorAlertsComponent', () => {
+  let component: ErrorAlertsComponent;
+  let fixture: ComponentFixture<ErrorAlertsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ReplacementsPanelComponent ],
+      declarations: [ ErrorAlertsComponent ],
       providers: [{ provide: IErrorAlertsService, useClass: ErrorAlertsService }]
-    })
-    .compileComponents();
-
-    await TestBed.configureTestingModule({
-      declarations: [  ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ReplacementsPanelComponent);
+    fixture = TestBed.createComponent(ErrorAlertsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

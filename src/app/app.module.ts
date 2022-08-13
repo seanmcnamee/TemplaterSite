@@ -10,6 +10,9 @@ import { ReplacementItemComponent } from './components/replacement-item/replacem
 import { IFormatterService } from './services/formatter/formatter.service.interface';
 import { FormatterService } from './services/formatter/formatter.service';
 import { FormatterComponent } from './components/formatter/formatter.component';
+import { ErrorAlertsComponent } from './components/error-alerts/error-alerts.component';
+import { IErrorAlertsService } from './services/error-alerts/arror-alerts.service.interface';
+import { ErrorAlertsService } from './services/error-alerts/error-alerts.service';
 
 @NgModule({
   declarations: [
@@ -18,14 +21,16 @@ import { FormatterComponent } from './components/formatter/formatter.component';
     ReplacementsPanelComponent,
     TemplateOutputPanelComponent,
     ReplacementItemComponent,
-    FormatterComponent
+    FormatterComponent,
+    ErrorAlertsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
   providers: [
-    {provide: IFormatterService, useClass: FormatterService}
+    {provide: IFormatterService, useClass: FormatterService},
+    {provide: IErrorAlertsService, useClass: ErrorAlertsService},
   ],
   bootstrap: [AppComponent]
 })

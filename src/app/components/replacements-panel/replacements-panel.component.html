@@ -6,25 +6,35 @@
                 <tr>
                     <th scope="col"></th>
                     <th scope="col">Key
-                        <span class="fa-solid fa-circle-info" data-bs-toggle="tooltip" title="Specify a key in your template with {key}"></span>
+                        <span class="fa-solid fa-circle-info" data-bs-toggle="tooltip"
+                            title="Specify a key in your template with {key}"></span>
                     </th>
                     <th scope="col">Value
-                        <span class="fa-solid fa-circle-info" data-bs-toggle="tooltip" title="Values will be replaced in the output"></span>
+                        <span class="fa-solid fa-circle-info" data-bs-toggle="tooltip"
+                            title="Values will be replaced in the output"></span>
                     </th>
                 </tr>
             </thead>
             <tbody>
-                <tr replacementItem *ngFor="let replacementItem of replacementItems"
-                    [item]="replacementItem"
-                    (deleteEvent)="onItemDeleted($event)"
-                    (changeEvent)="onItemChanged()">
+                <tr replacementItem *ngFor="let replacementItem of replacementItems" [item]="replacementItem"
+                    (deleteEvent)="onItemDeleted($event)" (changeEvent)="onItemChanged()">
                 </tr>
                 <tr *ngIf="!replacementItems?.length">
                     <td scope="row" colspan="3" class="w-0">
                         <div class="row justify-content-center">
-                            <button type="button" (click)="addKeysFromTemplate()" class="btn btn-outline-success w-auto">
-                                <span class="fa-solid fa-refresh"></span> Generate from template
-                            </button>
+                            <div class="col-auto">
+                                <button type="button" [disabled]="!generateFromTemplateAllowed" (click)="addKeysFromTemplate()"
+                                    class="btn btn-outline-success w-auto">
+                                    <span class="fa-solid fa-refresh"></span> Generate from template
+                                </button>
+                            </div>
+                            <div class="col-auto">
+                                <input type="file" id="spreadsheet-upload" class="form-control d-none"
+                                    accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel" />
+                                <label class="btn btn-outline-success" for="spreadsheet-upload">
+                                    <span class="fa-solid fa-file-excel"></span> Upload from spreadsheet
+                                </label>
+                            </div>
                         </div>
                     </td>
                 </tr>

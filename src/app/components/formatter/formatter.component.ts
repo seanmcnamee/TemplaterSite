@@ -23,11 +23,4 @@ export class FormatterComponent implements OnInit {
   public templateChanged(newTemplate: string) {
     this.template = newTemplate;
   }
-
-  public loadReplacementItems(){
-    var keyMatches = [...new Set((this.template.match(/\{\w+\}/g)))];
-    var newReplacementItems = keyMatches.map(key => new ReplacementItem(key.slice(1, key.length-1), ""));
-
-    this.replacementItems = this.replacementItems.concat(newReplacementItems);
-  }
 }

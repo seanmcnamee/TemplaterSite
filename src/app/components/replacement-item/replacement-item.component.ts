@@ -30,7 +30,7 @@ export class ReplacementItemComponent implements OnInit {
 }
 export class ReplacementItem {
   static idNum: number = 0;
-  id!: string;
+  id: string;
   key: string;
   value: string;
 

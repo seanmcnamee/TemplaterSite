@@ -2,8 +2,8 @@
     <div class="col-lg-6">
         <app-replacements-panel 
             [replacementItems]="replacementItems" 
-            (itemsChanged)="replacementItemsChanged($event)"
-            (loadReplacementItems)="loadReplacementItems()">
+            [template]="template"
+            (itemsChanged)="replacementItemsChanged($event)">
         </app-replacements-panel>
     </div>
     <div class="col-lg-6">
