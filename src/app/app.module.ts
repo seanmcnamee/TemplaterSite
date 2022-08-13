@@ -13,6 +13,10 @@ import { FormatterComponent } from './components/formatter/formatter.component';
 import { ErrorAlertsComponent } from './components/error-alerts/error-alerts.component';
 import { IErrorAlertsService } from './services/error-alerts/arror-alerts.service.interface';
 import { ErrorAlertsService } from './services/error-alerts/error-alerts.service';
+import { IReplacementsExtractorService } from './services/replacements-extractor/replacements-extractor.service.interface';
+import { ReplacementsExtractorService } from './services/replacements-extractor/replacements-extractor.service';
+import { SpreadsheetReaderService } from './services/spreadsheet-reader/spreadsheet-reader.service';
+import { ISpreadsheetReaderService } from './services/spreadsheet-reader/spreadsheet-reader.service.interface';
 
 @NgModule({
   declarations: [
@@ -31,6 +35,8 @@ import { ErrorAlertsService } from './services/error-alerts/error-alerts.service
   providers: [
     {provide: IFormatterService, useClass: FormatterService},
     {provide: IErrorAlertsService, useClass: ErrorAlertsService},
+    {provide: IReplacementsExtractorService, useClass: ReplacementsExtractorService},
+    {provide: ISpreadsheetReaderService, useClass: SpreadsheetReaderService},
   ],
   bootstrap: [AppComponent]
 })

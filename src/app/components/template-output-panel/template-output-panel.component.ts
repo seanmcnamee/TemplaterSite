@@ -15,7 +15,7 @@ export class TemplateOutputPanelComponent implements OnInit, OnChanges {
   outputValue!: string;
 
   constructor(private _formatter: IFormatterService) { 
-    this.templatePlaceholder = "Welcome!\n\nUse template replacements with a {keyNameInBrackets}\n\nPress \"Generate from template\" to add any of your {keys} to the Replacements panel. Your {keys} can occur multiple times in your template.";
+    this.templatePlaceholder = "Welcome! Enter your template here\n\nHere are some pointers to get you started:\n1. Template replacements are available by specifying a {keyNameInBrackets}\n2. The same key can be used multiple times in a template\n3. Press \"Generate from template\" to add any keys from your Template to the Replacements panel\n4. Use \"Upload from spreadsheet\" to grab keys from a spreadsheet (column per key)";
   }
 
   ngOnInit(): void {

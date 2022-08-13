@@ -8,12 +8,23 @@
 $utilities: map-merge(
   $utilities,
   (
+    /* Add w-0 */
     "width": map-merge(
       map-get($utilities, "width"),
       (
         values: map-merge(
           map-get(map-get($utilities, "width"), "values"),
           (0: 0%),
+        ),
+      ),
+    ),
+    /* Add top-hidden */
+    "top": map-merge(
+      map-get($utilities, "top"),
+      (
+        values: map-merge(
+          map-get(map-get($utilities, "top"), "values"),
+          (hidden: -99999px),
         ),
       ),
     ),

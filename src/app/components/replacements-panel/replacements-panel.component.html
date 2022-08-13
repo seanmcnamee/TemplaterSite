@@ -1,7 +1,7 @@
 <div class="card bg-light rounded-0 shadow">
     <div class="card-body">
         <h5 class="card-title">Replacements</h5>
-        <div class="table-responsive">
+        <div class="table-responsive-sm">
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -30,11 +30,11 @@
                                     </button>
                                 </div>
                                 <div class="col-auto">
-                                    <input type="file" id="spreadsheet-upload" class="form-control d-none"
-                                        accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel" />
-                                    <label class="btn btn-outline-success" for="spreadsheet-upload">
-                                        <span class="fa-solid fa-file-excel"></span> Upload from spreadsheet
-                                    </label>
+                                    <input type="file" tabindex="-1" id="spreadsheet-upload" class="form-control position-fixed top-hidden" (change)="uploadSpreadsheet($event)"
+                                        accept=".xls,.xlsx, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel" aria-labelledby="spreadsheet-upload-btn"/>
+                                    <button [disabled]="!generateFromSpreadsheetAllowed" class="btn btn-outline-success" (click)="triggerUpload('spreadsheet-upload')" id="spreadsheet-upload-btn">
+                                            <span class="fa-solid fa-file-excel"></span> Upload from spreadsheet
+                                    </button>
                                 </div>
                             </div>
                         </td>
