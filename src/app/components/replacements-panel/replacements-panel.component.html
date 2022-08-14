@@ -3,7 +3,39 @@
         <h5 class="card-title">Replacements</h5>
         <div class="table-responsive-sm">
             <table class="table table-striped">
-                <thead>
+                <tbody>
+                    <tr *ngIf="!replacementItems?.length">
+                        <td scope="row" colspan="3" class="w-0">
+                            <div class="row justify-content-center">
+                                <div class="col-auto">
+                                    <button type="button" [disabled]="!generateFromTemplateAllowed" (click)="addKeysFromTemplate()"
+                                        class="btn btn-outline-success w-auto">
+                                        <span class="fa-solid fa-refresh"></span> Generate from template
+                                    </button>
+                                </div>
+                                <div class="col-auto">
+                                    <input type="file" tabindex="-1" id="spreadsheet-upload" class="form-control position-fixed top-hidden" (change)="uploadSpreadsheet($event)"
+                                        accept=".xls,.xlsx, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel" aria-labelledby="spreadsheet-upload-btn"/>
+                                    <button [disabled]="!generateFromSpreadsheetAllowed" class="btn btn-outline-success" (click)="triggerClick('spreadsheet-upload')" id="spreadsheet-upload-btn">
+                                            <span class="fa-solid fa-file-excel"></span> Upload from spreadsheet
+                                    </button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr *ngIf="replacementItems?.length">
+                        <td scope="row" colspan="3" class="w-0">
+                            <div class="row justify-content-center">
+                                <div class="col-auto">
+                                    <button [disabled]="!generateToSpreadsheetAllowed" class="btn btn-outline-success" (click)="exportToSpreadsheet()">
+                                            <span class="fa-solid fa-file-export"></span> Export to spreadsheet
+                                    </button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+                <thead *ngIf="replacementItems?.length">
                     <tr>
                         <th scope="col"></th>
                         <th scope="col">Key
@@ -19,25 +51,6 @@
                 <tbody>
                     <tr replacementItem *ngFor="let replacementItem of replacementItems" [item]="replacementItem"
                         (deleteEvent)="onItemDeleted($event)" (changeEvent)="onItemChanged()">
-                    </tr>
-                    <tr *ngIf="!replacementItems?.length">
-                        <td scope="row" colspan="3" class="w-0">
-                            <div class="row justify-content-center">
-                                <div class="col-auto">
-                                    <button type="button" [disabled]="!generateFromTemplateAllowed" (click)="addKeysFromTemplate()"
-                                        class="btn btn-outline-success w-auto">
-                                        <span class="fa-solid fa-refresh"></span> Generate from template
-                                    </button>
-                                </div>
-                                <div class="col-auto">
-                                    <input type="file" tabindex="-1" id="spreadsheet-upload" class="form-control position-fixed top-hidden" (change)="uploadSpreadsheet($event)"
-                                        accept=".xls,.xlsx, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel" aria-labelledby="spreadsheet-upload-btn"/>
-                                    <button [disabled]="!generateFromSpreadsheetAllowed" class="btn btn-outline-success" (click)="triggerUpload('spreadsheet-upload')" id="spreadsheet-upload-btn">
-                                            <span class="fa-solid fa-file-excel"></span> Upload from spreadsheet
-                                    </button>
-                                </div>
-                            </div>
-                        </td>
                     </tr>
                     <tr>
                         <td scope="row" class="w-0">

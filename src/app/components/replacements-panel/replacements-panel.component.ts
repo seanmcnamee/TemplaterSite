@@ -3,7 +3,7 @@ import { Tooltip } from 'bootstrap';
 import { ErrorAlertItem, IErrorAlertsService } from 'src/app/services/error-alerts/arror-alerts.service.interface';
 import { ReplacementItem } from '../replacement-item/replacement-item.component';
 import { IReplacementsExtractorService } from 'src/app/services/replacements-extractor/replacements-extractor.service.interface';
-import { ISpreadsheetReaderService } from 'src/app/services/spreadsheet-reader/spreadsheet-reader.service.interface';
+import { ISpreadsheetIOService } from 'src/app/services/spreadsheet-reader/spreadsheet-io.service.interface';
 import * as $ from 'jquery';
 
 @Component({
@@ -18,12 +18,13 @@ export class ReplacementsPanelComponent implements OnInit {
 
   generateFromTemplateAllowed: boolean = true;
   generateFromSpreadsheetAllowed: boolean = true;
+  generateToSpreadsheetAllowed: boolean = true;
   newReplacementItem: ReplacementItem = new ReplacementItem();
 
   constructor(
     private _errorAlertsService: IErrorAlertsService,
     private _replacementsExtractorService: IReplacementsExtractorService,
-    private _spreadsheetReaderService: ISpreadsheetReaderService) { }
+    private _spreadsheetIOService: ISpreadsheetIOService) { }
 
   ngOnInit(): void {
     Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
@@ -49,7 +50,7 @@ export class ReplacementsPanelComponent implements OnInit {
     }
   }
 
-  public triggerUpload(id: string){
+  public triggerClick(id: string){
     $(`#${id}`).trigger('focus').trigger('click');
   }
   public uploadSpreadsheet(event: Event) {
@@ -58,7 +59,7 @@ export class ReplacementsPanelComponent implements OnInit {
 
     let fileList: FileList | null = element.files;
     if (fileList && fileList.length == 1) {
-      this._spreadsheetReaderService.GetJsonArrays(fileList[0])
+      this._spreadsheetIOService.GetJsonArrays(fileList[0])
         .then((data) => {
           var newReplacementItems = this._replacementsExtractorService.GetItemsFromJsonArray(data);
           if (newReplacementItems.length > 0) {
@@ -86,5 +87,9 @@ export class ReplacementsPanelComponent implements OnInit {
 
   public onItemChanged() {
     this.itemsChanged.emit(Array.from(this.replacementItems));
+  }
+
+  public exportToSpreadsheet() {
+    this._spreadsheetIOService.SaveJsonToSheet(this._replacementsExtractorService.GetJsonArrayFromItems(this.replacementItems));
   }
 }

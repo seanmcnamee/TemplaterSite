@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SpreadsheetReaderService } from './spreadsheet-reader.service';
+import { SpreadsheetIOService } from './spreadsheet-io.service';
 
 describe('SpreadsheetReaderService', () => {
-  let service: SpreadsheetReaderService;
+  let service: SpreadsheetIOService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(SpreadsheetReaderService);
+    service = TestBed.inject(SpreadsheetIOService);
   });
 
   it('should be created', () => {

@@ -3,5 +3,6 @@ import { ReplacementItem } from "src/app/components/replacement-item/replacement
 export abstract class IReplacementsExtractorService {
   constructor() { }
   public abstract GetItemsFromTemplate(template: string): ReplacementItem[];
-  public abstract GetItemsFromJsonArray(jsonArray: unknown[]): ReplacementItem[];
+  public abstract GetItemsFromJsonArray(jsonArray: any[]): ReplacementItem[];
+  public abstract GetJsonArrayFromItems(items: ReplacementItem[]): object[];
 }

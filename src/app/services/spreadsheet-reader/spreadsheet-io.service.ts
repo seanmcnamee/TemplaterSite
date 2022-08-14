@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
-import { ISpreadsheetReaderService } from './spreadsheet-reader.service.interface';
+import { ISpreadsheetIOService } from './spreadsheet-io.service.interface';
 import * as XLSX from 'xlsx';
-import { Subject, Subscriber } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SpreadsheetReaderService implements ISpreadsheetReaderService {
+export class SpreadsheetIOService implements ISpreadsheetIOService {
 
   constructor() { }
 
@@ -34,5 +33,11 @@ export class SpreadsheetReaderService implements ISpreadsheetReaderService {
       };
       reader.onerror = (e: any) => reject("Error occurred while reading file");
     });
+  }
+  
+  public SaveJsonToSheet(json: any[]): void {
+    const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(json);
+    const workbook: XLSX.WorkBook = {Sheets: {'data': worksheet}, SheetNames: ['data']};
+    XLSX.writeFile(workbook, "testExport.xlsx");
   }
 }

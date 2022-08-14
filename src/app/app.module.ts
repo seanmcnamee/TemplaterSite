@@ -15,8 +15,8 @@ import { IErrorAlertsService } from './services/error-alerts/arror-alerts.servic
 import { ErrorAlertsService } from './services/error-alerts/error-alerts.service';
 import { IReplacementsExtractorService } from './services/replacements-extractor/replacements-extractor.service.interface';
 import { ReplacementsExtractorService } from './services/replacements-extractor/replacements-extractor.service';
-import { SpreadsheetReaderService } from './services/spreadsheet-reader/spreadsheet-reader.service';
-import { ISpreadsheetReaderService } from './services/spreadsheet-reader/spreadsheet-reader.service.interface';
+import { SpreadsheetIOService } from './services/spreadsheet-reader/spreadsheet-io.service';
+import { ISpreadsheetIOService } from './services/spreadsheet-reader/spreadsheet-io.service.interface';
 
 @NgModule({
   declarations: [
@@ -36,7 +36,7 @@ import { ISpreadsheetReaderService } from './services/spreadsheet-reader/spreads
     {provide: IFormatterService, useClass: FormatterService},
     {provide: IErrorAlertsService, useClass: ErrorAlertsService},
     {provide: IReplacementsExtractorService, useClass: ReplacementsExtractorService},
-    {provide: ISpreadsheetReaderService, useClass: SpreadsheetReaderService},
+    {provide: ISpreadsheetIOService, useClass: SpreadsheetIOService},
   ],
   bootstrap: [AppComponent]
 })

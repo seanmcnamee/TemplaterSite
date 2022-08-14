@@ -3,8 +3,8 @@ import { IErrorAlertsService } from 'src/app/services/error-alerts/arror-alerts.
 import { ErrorAlertsService } from 'src/app/services/error-alerts/error-alerts.service';
 import { ReplacementsExtractorService } from 'src/app/services/replacements-extractor/replacements-extractor.service';
 import { IReplacementsExtractorService } from 'src/app/services/replacements-extractor/replacements-extractor.service.interface';
-import { SpreadsheetReaderService } from 'src/app/services/spreadsheet-reader/spreadsheet-reader.service';
-import { ISpreadsheetReaderService } from 'src/app/services/spreadsheet-reader/spreadsheet-reader.service.interface';
+import { SpreadsheetIOService } from 'src/app/services/spreadsheet-reader/spreadsheet-io.service';
+import { ISpreadsheetIOService } from 'src/app/services/spreadsheet-reader/spreadsheet-io.service.interface';
 
 import { ReplacementsPanelComponent } from './replacements-panel.component';
 
@@ -18,7 +18,7 @@ describe('ReplacementsPanelComponent', () => {
       providers: [
         { provide: IErrorAlertsService, useClass: ErrorAlertsService },
         { provide: IReplacementsExtractorService, useClass: ReplacementsExtractorService },
-        { provide: ISpreadsheetReaderService, useClass: SpreadsheetReaderService }
+        { provide: ISpreadsheetIOService, useClass: SpreadsheetIOService }
       ]
     })
     .compileComponents();
