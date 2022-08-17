@@ -50,7 +50,7 @@ export class ReplacementsPanelComponent implements OnInit {
     }
   }
 
-  public triggerClick(id: string){
+  public triggerClick(id: string) {
     $(`#${id}`).trigger('focus').trigger('click');
   }
   public uploadSpreadsheet(event: Event) {
@@ -68,11 +68,11 @@ export class ReplacementsPanelComponent implements OnInit {
             this.generateFromSpreadsheetAllowed = true;
           } else {
             this._errorAlertsService.AddErrorAndBroadcast(new ErrorAlertItem("No rows could be parsed from the uploaded file. Please ensure each key is in its own column", 5000, true,
-            (item) => this.generateFromSpreadsheetAllowed = true));
+              (_) => this.generateFromSpreadsheetAllowed = true));
           }
         }).catch((error) => {
           this._errorAlertsService.AddErrorAndBroadcast(new ErrorAlertItem(error, 2000, true,
-            (item) => this.generateFromSpreadsheetAllowed = true));
+            (_) => this.generateFromSpreadsheetAllowed = true));
         })
     } else {
       this.generateFromSpreadsheetAllowed = true;
@@ -90,6 +90,16 @@ export class ReplacementsPanelComponent implements OnInit {
   }
 
   public exportToSpreadsheet() {
-    this._spreadsheetIOService.SaveJsonToSheet(this._replacementsExtractorService.GetJsonArrayFromItems(this.replacementItems));
+    this.generateToSpreadsheetAllowed = false;
+    var fileName = prompt("XLSX File name:");
+    var jsonArray = this._replacementsExtractorService.GetJsonArrayFromItems(this.replacementItems)
+
+    this._spreadsheetIOService.SaveJsonToSheet(jsonArray, fileName)
+      .then(_ => {
+        this.generateToSpreadsheetAllowed = true;
+      }).catch(errorMessage => {
+        this._errorAlertsService.AddErrorAndBroadcast(new ErrorAlertItem(errorMessage, 2000, true,
+          (_) => this.generateToSpreadsheetAllowed = true));
+      });
   }
 }

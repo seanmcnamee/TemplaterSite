@@ -34,10 +34,18 @@ export class SpreadsheetIOService implements ISpreadsheetIOService {
       reader.onerror = (e: any) => reject("Error occurred while reading file");
     });
   }
-  
-  public SaveJsonToSheet(json: any[]): void {
-    const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(json);
-    const workbook: XLSX.WorkBook = {Sheets: {'data': worksheet}, SheetNames: ['data']};
-    XLSX.writeFile(workbook, "testExport.xlsx");
+
+  public SaveJsonToSheet(json: any[], fileName: string | null): Promise<true> {
+    return new Promise<true>((resolve, reject) => {
+      if (!fileName?.trim().length) {
+        reject("No file name provided");
+        return;
+      }
+
+      const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(json);
+      const workbook: XLSX.WorkBook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
+      XLSX.writeFile(workbook, `${fileName}.xlsx`);      
+      resolve(true);
+    });
   }
 }
